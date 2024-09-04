@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cloudflare Turnstile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </head>
+  <body class="p-4">
+  <ul class=" flex p-4 gap-4">
+    <li><a class=" border-blue-400 border p-4 hover:bg-green-600" href="/">Automatically Success</a></li>
+    <li><a class=" border-blue-400 border p-4 hover:bg-green-600" href="/block">Automatically Blocked</a></li>
+    <li><a class=" border-blue-400 border p-4 hover:bg-green-600" href="/challenge">Challenge Success</a></li>
+  </ul>
+  <h1 class=" font-bold text-3xl">Turnstile Demo</h1>
+  <h2 class="font-semibold">Managed</h2>
+  <p class=" text-sm">Cloudflare will use information from the visitor to decide if an interactive challenge should be used. If we do show an interaction, the user will be prompted to check a box (no images or text to decipher).</p>

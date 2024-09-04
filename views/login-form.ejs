@@ -1,0 +1,61 @@
+<div class="my-5 bg-green-500 flex flex-col p-4 w-96 gap-4 mx-auto rounded-lg">
+  <input id="user" type="text" placeholder="user" class="p-2 rounded-lg" />
+  <input
+    id="password"
+    type="password"
+    placeholder="password"
+    class="p-2 rounded-lg"
+  />
+  <input type="hidden" id="token" />
+  <label for="success">
+    <input type="checkbox" id="success" checked />
+    Captcha Success
+  </label>
+  <div
+    class="cf-turnstile"
+    data-sitekey="<%= SITE_KEY %>"
+    data-size="flexible"
+    data-callback="jajalCallback"
+  ></div>
+  <button id="login" class="p-2 rounded-lg border-white border bg-slate-400">
+    Login
+  </button>
+</div>
+
+<script>
+  function jajalCallback(token) {
+    console.log(token, " <- token from cloudflare")
+    // set token to hidden form input
+    document.getElementById("token").value = token
+  }
+
+  document.getElementById("login").addEventListener("click", async () => {
+    const user = document.getElementById("user").value
+    const password = document.getElementById("password").value
+    const token = document.getElementById("token").value
+    const success = document.getElementById("success").checked
+
+    const response = await fetch("/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ user, password, token, success })
+    })
+    const data = await response.json()
+
+    if (data.success) {
+      Swal.fire({
+        icon: "success",
+        title: "Success",
+        text: data.message
+      })
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: data.message
+      })
+    }
+  })
+</script>
