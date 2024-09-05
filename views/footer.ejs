@@ -1,4 +1,11 @@
   <div class=" mt-5 p-4">
+    <h3 class=" font-bold">How this work:</h3>
+    <ol class=" list-decimal mb-3">
+      <li>Using automatic, user did'nt have to click the captcha to work</li>
+      <li>If the user indicates bot, the captcha will fail (you can see Error code 300*** and 600*** in browser console)</li>
+      <li>When clicking submit, client will send user, password, and token</li>
+      <li>Server will verify the token, the error is listed in below</li>
+    </ol>
     <h3 class=" font-bold">Reference:</h3>
     <ol class=" list-decimal">
       <li><a href="https://developers.cloudflare.com/turnstile/get-started/client-side-rendering/#widget-size" class="text-sky-500 font-semibold">Widget Style</a></li>
