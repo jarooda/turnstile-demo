@@ -50,14 +50,16 @@ app.post("/login", async (req, res) => {
       console.error(response.data)
       res.status(400).json({
         message: "Turnstile verification failed",
-        success: false
+        success: false,
+        server_response: response.data
       })
     }
   } catch (error) {
     console.error(error)
     res.status(500).json({
       message: "Error verifying Turnstile token",
-      success: false
+      success: false,
+      error: error.message
     })
   }
 })
