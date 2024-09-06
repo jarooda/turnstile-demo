@@ -32,6 +32,12 @@ app.get('/invisible', (req, res) => {
   })
 })
 
+app.get('/invisible-block', (req, res) => {
+  res.render('index', {
+    SITE_KEY: process.env.SITE_KEY_INVISIBLE_BLOCK
+  })
+})
+
 app.post("/login", async (req, res) => {
   const { user, password, token, success } = req.body
   const SECRET_SUCCESS = process.env.SECRET_KEY_PASS

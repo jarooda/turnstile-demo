@@ -17,8 +17,9 @@
     data-sitekey="<%= SITE_KEY %>"
     data-size="flexible"
     data-callback="jajalCallback"
+    data-error-callback="jajalErrorCallback"
   ></div>
-  <button id="login" class="p-2 rounded-lg border-white border bg-slate-400">
+  <button id="login" class="p-2 rounded-lg border-white border bg-violet-400 disabled:cursor-block disabled:bg-slate-900" disabled>
     Login
   </button>
 </div>
@@ -29,6 +30,13 @@
     // set token to hidden form input
     document.getElementById("token").value = token
     document.getElementById("token-preview").innerText = token
+    // enable login button
+    document.getElementById("login").removeAttribute("disabled")
+  }
+
+  function jajalErrorCallback(error) {
+    console.error(error, " <- error from cloudflare")
+    document.getElementById("token-preview").innerText = 'error coba lihat inspect element'
   }
 
   document.getElementById("login").addEventListener("click", async () => {
