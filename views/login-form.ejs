@@ -11,6 +11,7 @@
     <input type="checkbox" id="success" checked />
     Captcha Success
   </label>
+  <p class=" p-4 bg-red-400">Turnstile token = <span id="token-preview"></span></p>
   <div
     class="cf-turnstile"
     data-sitekey="<%= SITE_KEY %>"
@@ -27,6 +28,7 @@
     console.log(token, " <- token from cloudflare")
     // set token to hidden form input
     document.getElementById("token").value = token
+    document.getElementById("token-preview").innerText = token
   }
 
   document.getElementById("login").addEventListener("click", async () => {
